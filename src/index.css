@@ -1,0 +1,15 @@
+:root {
+	--green: #0f4940;
+	--lightblue: #4A75A8;
+}
+.container{
+  max-width: 1300px;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
