@@ -1,0 +1,64 @@
+.card-main {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	border-radius: 5px;
+}
+.playlist-details {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.playlist-details p {
+	font-size: 18px;
+	text-align: justify;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.playlist-name {
+	font-weight: 600;
+}
+.playlist-saved span {
+	font-weight: 600;
+	display: flex;
+	gap: 8px;
+	margin-right: 20px;
+}
+.delete-playlist{
+color: orange;
+}
+.edit-playlist{
+color: green;
+}
+.watch-btn {
+	text-decoration: none;
+	background: blue;
+	padding: 8px 0px;
+	font-size: 18px !important;
+	color: white;
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+/* player */
+.player-div {
+	width: 100%;
+}
+.player-div div {
+	/* any media quere change here for video player _ current player */
+	height: 100% !important;
+	width: 100% !important;
+}
+.player-div div div {
+	height: 100% !important;
+	width: 100% !important;
+}
+.player-div div div iframe {
+	border-radius: 5px;
+	width: 100% !important;
+	height: 100% !important;
+}

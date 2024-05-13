@@ -1,0 +1,69 @@
+.form-container {
+	max-width: 400px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 50px;
+}
+.form-container div {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+}
+.form-container div label {
+	font-size: 18px !important;
+	font-weight: 600;
+}
+.form-container button {
+	padding: 8px 15px;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid blue;
+    border-radius: 5px;
+    color: blue;
+    transition: all 0.3s;
+    cursor: pointer;
+
+}
+.form-container button:hover {
+	
+    background: blue;
+    border-radius: 15px;
+    color: white;
+}
+.form-container div input,
+textarea {
+	font-size: 16px !important;
+	border: 1px solid blue;
+	height: 40px;
+	border-radius: 5px;
+	outline: none;
+	padding: 0px 5px;
+}
+.check-div {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center;
+}
+.check-div input {
+	width: 20px !important;
+}
+
+/* Responsive CSS for mobile */
+@media only screen and (max-width: 600px) {
+	.form-container label {
+		margin-bottom: 3px;
+		font-size: 14px;
+	}
+
+	.form-container input[type="text"],
+	.form-container textarea {
+		font-size: 14px;
+	}
+
+	.form-container button {
+		font-size: 14px;
+	}
+}

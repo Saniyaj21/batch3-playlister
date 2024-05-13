@@ -1,15 +1,21 @@
 :root {
 	--green: #0f4940;
-	--lightblue: #4A75A8;
+	--lightblue: #4a75a8;
 }
-.container{
-  max-width: 1300px;
-}
-
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.container {
+	max-width: 1300px;
 }
 
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: "Roboto, sans-serif";
+}
 
+.gb-shadow {
+	box-shadow: 2px 5px 5px rgba(10, 59, 151, 0.703),
+		-2px -2px 5px rgba(45, 145, 12, 0.834);
+}
