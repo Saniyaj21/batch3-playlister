@@ -29,7 +29,6 @@ export const register = createAsyncThunk('user/register', async ({ name, email, 
         withCredentials: true
     }
     );
-    console.log(response);
     return response.data;
 })
 export const logout = createAsyncThunk('user/logout', async () => {
@@ -43,7 +42,6 @@ export const logout = createAsyncThunk('user/logout', async () => {
             withCredentials: true
         }
     );
-    console.log(response);
     return response.data;
 })
 export const getProfile = createAsyncThunk('user/getProfile', async () => {
@@ -57,7 +55,6 @@ export const getProfile = createAsyncThunk('user/getProfile', async () => {
             withCredentials: true
         }
     );
-    console.log(response);
     return response.data;
 })
 

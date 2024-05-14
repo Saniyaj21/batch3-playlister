@@ -1,0 +1,54 @@
+.watch-page-main {
+	display: flex;
+	width: 100%;
+	padding: 10px 10px;
+	gap: 50px;
+	height: 90vh;
+}
+
+.video-player {
+	width: 60%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+.video-player div {
+	height: 500px;
+}
+
+/* video player page css start here */
+.video-player h2 {
+	font-size: 18px;
+}
+.video-details-p {
+	text-align: start;
+}
+.video-player iframe {
+	height: 500px;
+}
+/* video player page css end here */
+
+.video-list {
+	width: 40%;
+}
+
+@media only screen and (max-width: 768px) {
+	.watch-page-main {
+		flex-direction: column;
+		height: auto;
+	}
+	.video-player {
+		width: 100%;
+	}
+	.video-player div {
+		height: 230px;
+	}
+	.video-player iframe {
+		width: 100%;
+		height: 210px;
+	}
+	.video-list {
+		width: 100%;
+		height: auto;
+	}
+}

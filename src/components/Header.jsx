@@ -22,7 +22,7 @@ const Header = () => {
 				{isAuthenticated ? (
 					<div className='logout-box'>
 						<div>
-							<button onClick={() => dispatch(logout())}>
+							<button className="font-p" onClick={() => dispatch(logout())}>
 								Logout <IoMdLogOut />
 							</button>
 						</div>
@@ -34,7 +34,7 @@ const Header = () => {
 					</div>
 				) : (
 					<div className='login-btn'>
-						<Link to='/login'>
+						<Link className="font-p" to='/login'>
 							Login <IoMdLogIn />
 						</Link>
 					</div>

@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./ProtectedRoute";
 import ProfilePage from "./pages/ProfilePage";
 import PlaylistPage from "./pages/PlaylistPage";
+import WatchPage from "./pages/WatchPage";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -29,11 +30,12 @@ const App = () => {
 			<Header />
 			<Toaster />
 			<Routes>
-			<Route element={<ProtectedRoute />}>
+				<Route element={<ProtectedRoute />}>
 					<Route path='/profile' element={<ProfilePage />} />
+					<Route path='/watch/:playlist' element={<WatchPage />} />
 				</Route>
-				<Route path='/' element={<Home />} />
 				<Route path='/playlists' element={<PlaylistPage />} />
+				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
 			</Routes>
 		</Router>

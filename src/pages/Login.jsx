@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register, selectUser } from "../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import "../styles/pages/login.css";
 
 const Login = () => {
 	const [name, setName] = useState("");
@@ -12,13 +13,13 @@ const Login = () => {
 	const dispatch = useDispatch();
 
 	const { isAuthenticated } = useSelector(selectUser);
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (isAuthenticated) {
-            navigate('/')
-        }
-		handleRegister()
+			navigate("/");
+		}
+		handleRegister();
 	}, [isAuthenticated, profilePic]);
 
 	const handleRegister = () => {
@@ -40,22 +41,23 @@ const Login = () => {
 		<>
 			<div className='login_page'>
 				<div className='login_img'>
-					<div className='img' id='googlelogin'>
-						<div className='login'>
-							<h2>Quick Compressor </h2>
-							<p>Compress your image quickly </p>
-							<GoogleLogin
-								className='button'
-								onSuccess={handleSignup}
-								onError={() => {
-									console.log("Login Failed");
-								}}
-							/>
+					<div className='login'>
+						<div>
+							<h2>PlayLister </h2>
+							<p>Create your custom playlist how you want.</p>
 						</div>
+						<GoogleLogin
+							className='button'
+							onSuccess={handleSignup}
+							onError={() => {
+								console.log("Login Failed");
+							}}
+						/>
 					</div>
-					<div className='img' id='benifit'>
-					    <h3>you will get the following benefits if you login</h3>
-						<p>First you will see all the compresed images in album from</p>
+
+					<div className='login-footer' id='benifit'>
+						<h3>Join us for more insights.</h3>
+						<p>Unlock extra features with login or signup.</p>
 					</div>
 				</div>
 			</div>

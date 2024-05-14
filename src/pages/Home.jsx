@@ -1,7 +1,20 @@
+import { useEffect } from "react";
 import HomeButton from "../components/HomeButton";
 import "../styles/pages/Home.css";
+import { useSelector } from "react-redux";
+import { selectUser } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+const {user, isAuthenticated} = useSelector(selectUser)
+const navigate = useNavigate()
+	useEffect(() => {
+	 if (isAuthenticated){
+		 navigate('/playlists')
+	 }
+	}, [isAuthenticated])
+	
+
 	return (
 		<div className='home-container'>
 			<img src='./media/background.jpg' className='home-main' />
@@ -13,10 +26,18 @@ const Home = () => {
 					url.
 				</p>
 
-				<div className="cta-box">
-          <HomeButton text={'Get Started'} link={'/login'} clsName={'bg-green'}/>
-          <HomeButton text={'Public Playlists'} link={'/playlists'} clsName={'bg-white'}/>
-        </div>
+				<div className='cta-box'>
+					<HomeButton
+						text={"Get Started"}
+						link={"/login"}
+						clsName={"bg-green"}
+					/>
+					<HomeButton
+						text={"Public Playlists"}
+						link={"/playlists"}
+						clsName={"bg-white"}
+					/>
+				</div>
 			</div>
 		</div>
 	);

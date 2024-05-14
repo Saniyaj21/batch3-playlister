@@ -1,0 +1,27 @@
+.video-card-main {
+	display: flex;
+	height: 80px;
+	margin: 10px 0px;
+	padding: 5px 15px ;
+	border-radius: 3px;
+	gap: 10px;
+	border: 2px solid rgba(23, 252, 138, 0.641);
+    background: #d6d2ea5d;
+	cursor: pointer;
+}
+.video-box {
+	width: 150px;
+}
+.card-details {
+	width: 100%;
+	overflow: hidden;
+}
+.card-details p {
+	font-size: 16px !important;
+	width: 100%;
+	text-align: start;
+}
+
+.video-card-main iframe {
+	width: 100%;
+}

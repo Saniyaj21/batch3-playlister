@@ -29,7 +29,7 @@ const ProfilePage = () => {
 					onClick={()=>setActive(1)}
 					className={`${active === 1 ? "section-active" : ""} option`}>
 						<RiPlayListAddFill />
-						Playlists
+						My Playlists
 					</span>
 					<span 
 					onClick={()=>setActive(2)}

@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+.font-p {
+	font-family: "Sriracha", cursive;
+	font-weight: 400;
+}
+
+
 :root {
 	--green: #0f4940;
 	--lightblue: #4a75a8;
@@ -11,9 +18,10 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-body {
-	font-family: "Roboto, sans-serif";
-}
+/* body {
+	font-family: "Sriracha", cursive;
+	font-weight: 400;
+} */
 
 .gb-shadow {
 	box-shadow: 2px 5px 5px rgba(10, 59, 151, 0.703),
