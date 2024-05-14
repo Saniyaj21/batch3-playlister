@@ -8,12 +8,16 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <GoogleOAuthProvider clientId='181727105626-juff5vov439lbm54s55hjo0pstnmqas7.apps.googleusercontent.com'>
+  <GoogleOAuthProvider clientId='181727105626-4snohvf7lqrr451oddqpn8uvatdv71me.apps.googleusercontent.com'>
 		<Provider store={store}>
 			<App />
 		</Provider>
 	</GoogleOAuthProvider>
 )
+// development use this
+// export const base_url = "http://localhost:8080";
 
-export const base_url = "http://localhost:8080";
+
+// final deploy use this
+export const base_url = "https://playlister-server.vercel.app";
 
