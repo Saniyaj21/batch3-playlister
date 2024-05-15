@@ -112,8 +112,8 @@ const EditPlaylistPage = () => {
 								<ReactPlayer width={"100%"} height={"100%"} url={video?.link} />
 							</div>
 							<div className='editpage-card-details'>
-								<p className='font-p'>
-									<TextOverFlowHandle text={video?.title} size={20} />{" "}
+								<p className=''>
+									<TextOverFlowHandle text={video?.title} size={18} />{" "}
 								</p>
 								<span
 									onClick={() => dispatch(deleteVideoFromPlaylist(video?._id))}
