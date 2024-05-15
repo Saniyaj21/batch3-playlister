@@ -6,6 +6,19 @@
 	height: 90vh;
 }
 
+.enroll-now-btn {
+	width: 100%;
+	height: 40px;
+	background-color: #000;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+}
+
 .video-player {
 	width: 60%;
 	height: auto;
@@ -30,6 +43,11 @@
 
 .video-list {
 	width: 40%;
+}
+.video-list .playlist-info{
+	background: rgba(0, 0, 255, 0.33);
+	border-radius: 10px;
+	padding: 20px 5%;
 }
 
 @media only screen and (max-width: 768px) {

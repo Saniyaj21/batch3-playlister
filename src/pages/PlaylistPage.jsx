@@ -29,13 +29,10 @@ const PlaylistPage = () => {
 			</div>
 
 			<div className='suggest-conatiner'>
-				<h2>
-					Suggested Playlists <hr />
-				</h2>
 				<div className='card-conatiner'>
 					{publicPlaylists &&
 						publicPlaylists.map((playlist) => {
-							return <PlaylistCard playlist={playlist} />;
+							return <PlaylistCard playlist={playlist} key={playlist._id} />;
 						})}
 				</div>
 			</div>

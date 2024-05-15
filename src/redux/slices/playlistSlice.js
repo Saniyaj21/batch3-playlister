@@ -3,10 +3,10 @@ import api from "../../utils/axiosInterceptor.js";
 import { base_url } from '../../main.jsx'
 
 const initialState = {
-    allPlaylists: [],
     publicPlaylists: [],
     selectedPlaylist: {},
     myPlaylists: [],
+    searchresult: [],
     status: {
         createPlaylist: 'idle',
         getPublicPlaylist: 'idle',
@@ -15,6 +15,9 @@ const initialState = {
         addVideo: "idle",
         deleteVideo: "idle",
         myPlaylist: "idle",
+        removeEnrollment: "idle",
+        enrollPlaylistStatus: "idle",
+        searchStatus: "idle",
     },
     error: ""
 }
@@ -112,6 +115,58 @@ export const getMyPlaylistsSlice = createAsyncThunk('playlist/getMyPlaylistsSlic
     return response.data;
 })
 
+export const removeEnrollmentSlice = createAsyncThunk('playlist/removeEnrollmentSlice', async (playlistid) => {
+    const response = await api.get(
+        `${base_url}/api/playlist/remove-enroll/${playlistid}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            withCredentials: true
+        }
+    );
+    return response.data;
+})
+export const enrollPlaylistSlice = createAsyncThunk('playlist/enrollPlaylistSlice', async (playlistid) => {
+    const response = await api.get(
+        `${base_url}/api/playlist/enroll/${playlistid}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            withCredentials: true
+        }
+    );
+    return response.data;
+})
+export const searchPlaylistSlice = createAsyncThunk('playlist/searchPlaylistSlice', async (keyword) => {
+    const response = await api.get(
+        `${base_url}/api/playlist/search/${keyword}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            withCredentials: true
+        }
+    );
+    return response.data;
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 const playlistSlice = createSlice({
     name: 'playlist',
     initialState: initialState,
@@ -195,6 +250,44 @@ const playlistSlice = createSlice({
             })
             .addCase(getMyPlaylistsSlice.rejected, (state, action) => {
                 state.status.myPlaylist = 'failed';
+            })
+            //delete playlist 
+            .addCase(removeEnrollmentSlice.pending, (state, action) => {
+                state.status.removeEnrollment = 'loading';
+            })
+            .addCase(removeEnrollmentSlice.fulfilled, (state, action) => {
+                state.status.removeEnrollment = 'success';
+                state.selectedPlaylist = action.payload.updatedPlaylist;
+                state.publicPlaylists = action.payload.allPlaylists
+                state.myPlaylists = action.payload.myPlaylists
+            })
+            .addCase(removeEnrollmentSlice.rejected, (state, action) => {
+                state.status.removeEnrollment = 'failed';
+            })
+            //delete playlist 
+            .addCase(enrollPlaylistSlice.pending, (state, action) => {
+                state.status.enrollPlaylistStatus = 'loading';
+            })
+            .addCase(enrollPlaylistSlice.fulfilled, (state, action) => {
+                state.status.enrollPlaylistStatus = 'success';
+                state.selectedPlaylist = action.payload.updatedPlaylist;
+                state.publicPlaylists = action.payload.allPlaylists
+                state.myPlaylists = action.payload.myPlaylists
+            })
+            .addCase(enrollPlaylistSlice.rejected, (state, action) => {
+                state.status.enrollPlaylistStatus = 'failed';
+            })
+            //delete playlist 
+            .addCase(searchPlaylistSlice.pending, (state, action) => {
+                state.status.searchStatus = 'loading';
+            })
+            .addCase(searchPlaylistSlice.fulfilled, (state, action) => {
+                state.status.searchStatus = 'success';
+                state.searchresult = action.payload.searchResult;
+              
+            })
+            .addCase(searchPlaylistSlice.rejected, (state, action) => {
+                state.status.searchStatus = 'failed';
             })
 
     }

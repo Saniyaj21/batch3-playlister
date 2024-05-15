@@ -10,6 +10,7 @@ const VideoPlayer = ({ currentVideo }) => {
 				<>
 					<div>
 						<ReactPlayer
+						controls
 							playing
 							width={"100%"}
 							height={"100%"}

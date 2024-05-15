@@ -6,10 +6,13 @@ import VideoCard from "../components/VideoCard";
 import "../styles/pages/videoPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
+	enrollPlaylistSlice,
 	getSelectedPlaylist,
+	removeEnrollmentSlice,
 	selectPlaylist,
 } from "../redux/slices/playlistSlice";
 import TextOverFlowHandle from "../helpers/TextOverFlowHandle";
+import { selectUser } from "../redux/slices/userSlice";
 
 const WatchPage = () => {
 	const params = useParams();
@@ -20,6 +23,7 @@ const WatchPage = () => {
 
 	const dispatch = useDispatch();
 	const { selectedPlaylist } = useSelector(selectPlaylist);
+	const { user } = useSelector(selectUser);
 
 	useEffect(() => {
 		// console.log(params);
@@ -37,19 +41,43 @@ const WatchPage = () => {
 				<VideoPlayer currentVideo={currentVideo} />
 			</div>
 			<div className='video-list'>
-				<div>
-					<h1 className='font-p'>
+				<div className='playlist-info'>
+					<h3 className='font-p'>
 						Playlist :{" "}
 						<TextOverFlowHandle text={selectedPlaylist?.name} size={15} />{" "}
-					</h1>
+					</h3>
+
 					<h6 className='font-p'>Description : {selectedPlaylist?.desc}</h6>
+					{selectedPlaylist?.enrolled?.includes(user._id) ? (
+						<div>
+							<button
+								onClick={() =>
+									dispatch(removeEnrollmentSlice(selectedPlaylist?._id))
+								}
+								className='font-p enroll-now-btn'
+							>
+								Remove Playlist
+							</button>
+						</div>
+					) : (
+						<div>
+							<button
+								onClick={() =>
+									dispatch(enrollPlaylistSlice(selectedPlaylist?._id))
+								}
+								className='font-p enroll-now-btn'
+							>
+								Enroll Playlist
+							</button>
+						</div>
+					)}
 				</div>
 				{selectedPlaylist &&
 					selectedPlaylist.videos?.map((video) => (
 						<VideoCard
 							video={video}
 							setCurrentVideo={setCurrentVideo}
-							key={video.id}
+							key={video._id}
 						/>
 					))}
 			</div>

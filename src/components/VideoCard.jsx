@@ -9,11 +9,15 @@ const VideoCard = ({ video, setCurrentVideo }) => {
 	return (
 		<div onClick={() => setCurrentVideo(video)} className='video-card-main'>
 			<div className='video-box'>
-				<ReactPlayer width={"100%"} height={"100%"} url={video?.link} />
+				<ReactPlayer muted width={"100%"} height={"100%"} url={video?.link} />
 			</div>
 			<div className='card-details'>
-				<p className='font-p'><TextOverFlowHandle text={video?.title} size={20} /></p>
-				<p><TextOverFlowHandle text={video?.desc} size={40} /></p>
+				<p className='font-p'>
+					<TextOverFlowHandle text={video?.title} size={20} />
+				</p>
+				<p>
+					<TextOverFlowHandle text={video?.desc} size={40} />
+				</p>
 			</div>
 		</div>
 	);
