@@ -10,6 +10,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import ProfilePage from "./pages/ProfilePage";
 import PlaylistPage from "./pages/PlaylistPage";
 import WatchPage from "./pages/WatchPage";
+import EditPlaylistPage from "./pages/EditPlaylistPage";
+import SearchPage from "./pages/SearchPage";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -33,8 +35,10 @@ const App = () => {
 				<Route element={<ProtectedRoute />}>
 					<Route path='/profile' element={<ProfilePage />} />
 					<Route path='/watch/:playlist' element={<WatchPage />} />
+					<Route path='/playlists/edit/:playlist' element={<EditPlaylistPage />} />
 				</Route>
 				<Route path='/playlists' element={<PlaylistPage />} />
+				<Route path='/search' element={<SearchPage />} />
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
 			</Routes>

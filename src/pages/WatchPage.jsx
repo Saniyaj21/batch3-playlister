@@ -4,43 +4,54 @@ import T from "../test/T";
 import VideoPlayer from "../components/VideoPlayer";
 import VideoCard from "../components/VideoCard";
 import "../styles/pages/videoPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	getSelectedPlaylist,
+	selectPlaylist,
+} from "../redux/slices/playlistSlice";
+import TextOverFlowHandle from "../helpers/TextOverFlowHandle";
 
 const WatchPage = () => {
 	const params = useParams();
 	const [playlist, setPlaylist] = useState("");
-	const [currentVideoId, setCurrentVideoId] = useState("");
+	// const [currentVideoId, setCurrentVideoId] = useState("");
+	const [currentVideo, setCurrentVideo] = useState({});
 	// console.log(currentVideoId);
 
-	const videos = [
-		{ id: "1" },
-		{ id: "2" },
-		{ id: "3" },
-		{ id: "4" },
-		{ id: "5" },
-	];
+	const dispatch = useDispatch();
+	const { selectedPlaylist } = useSelector(selectPlaylist);
 
 	useEffect(() => {
 		// console.log(params);
 		setPlaylist(params.playlist);
+		dispatch(getSelectedPlaylist(playlist));
+		if (selectedPlaylist?.videos?.length > 0) {
+			setCurrentVideo(selectedPlaylist?.videos[0]);
+		}
 
 		// dispatch get playlist with playlist id
-	}, [playlist]);
+	}, [playlist, selectedPlaylist?.videos?.length]);
 	return (
 		<div className='watch-page-main'>
 			<div className='video-player'>
-				<VideoPlayer videoId={currentVideoId} />
+				<VideoPlayer currentVideo={currentVideo} />
 			</div>
 			<div className='video-list'>
 				<div>
-					<h1 className="font-p">Playlist Name</h1>
+					<h1 className='font-p'>
+						Playlist :{" "}
+						<TextOverFlowHandle text={selectedPlaylist?.name} size={15} />{" "}
+					</h1>
+					<h6 className='font-p'>Description : {selectedPlaylist?.desc}</h6>
 				</div>
-				{videos.map((video) => (
-					<VideoCard
-						videoId={video.id}
-						setCurrentVideoId={setCurrentVideoId}
-						key={video.id}
-					/>
-				))}
+				{selectedPlaylist &&
+					selectedPlaylist.videos?.map((video) => (
+						<VideoCard
+							video={video}
+							setCurrentVideo={setCurrentVideo}
+							key={video.id}
+						/>
+					))}
 			</div>
 		</div>
 	);

@@ -15,22 +15,31 @@
 	justify-content: center;
 	align-items: center;
 }
+
+
 .search-div {
-	border: 1px solid green;
 	border-radius: 5px;
 	width: 90%;
 	max-width: 400px;
 }
-.search-div input,
-button {
-	height: 40px;
-	background: transparent;
-	padding: 5px 10px;
-	outline: none;
-	border: none;
+.search-div a {
+	text-decoration: none;
+	border: 1px solid green;
+	background: green;
+	padding: 8px 15px;
+	border-radius: 5px;
 	width: 100%;
-	font-size: 18px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
 }
+
+
+
+
+
 .search-div button {
 	background: green;
 	color: white;

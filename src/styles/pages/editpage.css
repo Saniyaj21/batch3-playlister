@@ -1,0 +1,62 @@
+.edit-playlist-main {
+	max-width: 500px;
+	padding: 0px 5%;
+	display: block;
+	margin: 30px 0px;
+	width: 100%;
+	margin: auto;
+}
+.playlist-details h2 {
+	color: green;
+}
+.playlist-details p {
+	font-size: 14px;
+}
+
+.add-video-main {
+	width: 100%;
+}
+.add-video-main h1 {
+	margin-top: 20px;
+}
+.add-video-main .form-container-edit {
+	margin: 20px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 10px;
+}
+.add-video-main .form-container-edit div {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.add-video-main .form-container-edit div input{
+	outline: none;
+	border: 1px solid blue;
+	height: 30px;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+.add-video-main .form-container-edit button {
+	background: blue;
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.edit-page-card p {
+	font-size: 18px;
+}
+.editpage-card-details p {
+	font-size: 18px;
+}
+.editpage-card-details span {
+	color: red;
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	cursor: pointer;
+}

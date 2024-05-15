@@ -1,15 +1,25 @@
 import ReactPlayer from "react-player";
 import "../styles/components/Playlistcard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiPlayListAddFill } from "react-icons/ri";
 import { FaTrash } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { ImCancelCircle } from "react-icons/im";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../redux/slices/userSlice";
+import { deletePlaylist } from "../redux/slices/playlistSlice";
 
-const PlaylistCard = () => {
-	const { isAuthenticated } = useSelector(selectUser);
+const PlaylistCard = ({ playlist }) => {
+	const { isAuthenticated, user } = useSelector(selectUser);
+	let enrolled = playlist?.enrolled.includes(user._id);
+	console.log(enrolled);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const handleDeletePlaylist = () => {
+		dispatch(deletePlaylist(playlist?._id));
+		navigate("/playlists");
+	};
 
 	return (
 		<div className='card-main  gb-shadow'>
@@ -21,31 +31,44 @@ const PlaylistCard = () => {
 				/>
 			</div>
 			<div className='playlist-details'>
-				<p className='playlist-name'>Every Snake is not Python</p>
+				<p className='playlist-name'>{playlist?.name}</p>
 				<p className='playlist-saved'>
 					<span>
 						<RiPlayListAddFill />
-						9000 Enrolled
+						{playlist?.totalEnrolled} Enrolled
 					</span>
 					{isAuthenticated && (
 						<>
-							<span className='delete-playlist'>
-								<FaTrash />
-							</span>
-							<span className='edit-playlist'>
-								<FaRegEdit />
-							</span>
-							<span className='remove-playlist'>
-								<ImCancelCircle />
-							</span>
+							{playlist?.creator == user._id ? (
+								<>
+									<span
+										onClick={handleDeletePlaylist}
+										className='delete-playlist'
+									>
+										<FaTrash />
+									</span>
+									<span className='edit-playlist'>
+										<Link to={`/playlists/edit/${playlist?._id}`}>
+											<FaRegEdit />
+										</Link>
+									</span>
+								</>
+							) : (
+								""
+							)}
+
+							{enrolled ? (
+								<span className='unenroll-playlist'>
+									<ImCancelCircle />
+								</span>
+							) : (
+								""
+							)}
 						</>
 					)}
 				</p>
-				<p className='desc'>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni esse
-					aliquid odit voluptate vitae obcaecati. Et fuga ab enim dolore.
-				</p>
-				<Link className='watch-btn' to={"/watch/66ydasfgyudasd"}>
+				<p className='desc'>{playlist?.desc}</p>
+				<Link className='watch-btn' to={`/watch/${playlist?._id}`}>
 					Watch Now
 				</Link>
 			</div>
