@@ -99,7 +99,7 @@ const userSlice = createSlice({
                 state.status.logoutStatus = 'loading';
             })
             .addCase(getProfile.fulfilled, (state, action) => {
-                state.status.logoutStatus = 'success';
+                // state.status.logoutStatus = 'success';
                 state.user = action.payload.user;
                 state.isAuthenticated = true
                 state.token = action.payload.user.token;
